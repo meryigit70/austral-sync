@@ -17,9 +17,9 @@ jobs:
       - name: Kütüphaneleri Yükle
         run: pip install renault-api aiohttp
       - name: Verileri Çek ve Firebase'e Yaz
-env:
-       RENAULT_EMAIL: ${{ secrets.RENAULT_EMAIL }}
-       RENAULT_PASSWORD: ${{ secrets.RENAULT_PASSWORD }}
-       RENAULT_VIN: ${{ secrets.RENAULT_VIN }}
-       FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
+        env:
+          RENAULT_EMAIL: ${{ secrets.RENAULT_EMAIL }}
+          RENAULT_PASSWORD: ${{ secrets.RENAULT_PASSWORD }}
+          RENAULT_VIN: ${{ secrets.RENAULT_VIN }}
+          FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
         run: python sync_renault.py

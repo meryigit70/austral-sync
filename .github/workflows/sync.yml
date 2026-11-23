@@ -1,0 +1,25 @@
+name: My Renault 15dk Senkronizasyon
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python Kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Kütüphaneleri Yükle
+        run: pip install renault-api aiohttp
+      - name: Verileri Çek ve Firebase'e Yaz
+env:
+       RENAULT_EMAIL: ${{ secrets.RENAULT_EMAIL }}
+       RENAULT_PASSWORD: ${{ secrets.RENAULT_PASSWORD }}
+       RENAULT_VIN: ${{ secrets.RENAULT_VIN }}
+       FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
+        run: python sync_renault.py

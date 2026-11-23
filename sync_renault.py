@@ -13,7 +13,7 @@ FIREBASE_URL = os.environ["FIREBASE_DB_URL"].rstrip("/")
 async def main():
     async with aiohttp.ClientSession() as websession:
         # Türkiye (tr_TR) bölgesi için güncel Gigya/Kamereon anahtarlarını otomatik çeker
-        client = RenaultClient(websession=websession, locale="tr_TR")
+        client = RenaultClient(websession=websession, locale="fr_FR", country="TR")
         await client.session.login(EMAIL, PASSWORD)
 
         account_id = (await client.get_person()).accounts[0].accountId
